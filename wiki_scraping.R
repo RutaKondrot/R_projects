@@ -129,7 +129,7 @@ View(coaches_plot_clean)
 write.csv(coaches_plot_clean, "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\coaches_plot_clean.csv", row.names = FALSE)
 
 ### 4. The stacked bar chart of transformed table of coaches of FC Bayern Munich since 1963
-ggplot(coaches_plot_clean, aes(x = factor(Coach), y = Number_of_titles, fill = Type_of_title, label = Number_of_titles))+
+chart <- ggplot(coaches_plot_clean, aes(x = factor(Coach), y = Number_of_titles, fill = Type_of_title, label = Number_of_titles)) +
   geom_bar(position = position_stack(), stat = "identity", width = .7) + 
   geom_text(aes(label = Number_of_titles), position = position_stack(vjust = 0.5),size = 4) +
   scale_x_discrete(name = NULL) +
