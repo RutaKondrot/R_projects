@@ -150,4 +150,4 @@ ggplot(coaches_plot_clean, aes(x = factor(Coach), y = Number_of_titles, fill = T
 ggsave_custom(chart, 
               "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\chart.png",
               dpi = "auto",
-              width = 7, height = 14, unit = "in")
+              width = 7, height = 14, unit = "cm")
