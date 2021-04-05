@@ -67,6 +67,9 @@ coaches$Coach <- coaches$Coach %>% str_remove_all("[:punct:]caretaker[:punct:]")
 ### 1. Table of coaches of FC Bayern Munich since 1963 (with some duplicate values in "Coach" column))
 View(coaches) 
 
+# Saving created data frame as a .csv file
+write.csv(coaches, "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\coaches.csv", row.names = FALSE)
+
 
 # Creating a data frame that will be transformed into a new data frame without duplicates and dates ("Period" column)
 coaches1 <- data.frame(coaches$Coach, as.numeric(unlist(coaches$`Total number of titles`)), as.numeric(unlist(coaches$`Domestic titles`)), 
@@ -94,15 +97,10 @@ colnames(coaches_clean) <- c("Coach", "Total number of titles", "Domestic titles
 ### 2. Table of coaches of FC Bayern Munich since 1963 (without duplicate values in "Coach" column and without "Period" column))
 View(coaches_clean)
 
-#Coach_t <- as.factor(total_titles[,1])
-#Total_t <- as.numeric(total_titles[,2])
-#total_titles <- data.frame(Coach_t, Total_t)
-#total_titles[total_titles == 0] <- NA
-#total_titles <- na.omit(total_titles)
+# Saving created data frame as a .csv file
+write.csv(coaches_clean, "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\coaches_clean.csv", row.names = FALSE)
 
-# GALIMA IRASYTI I CSV coaches_clean
 
-# transformuojam lentele grafikui
 # Transforming a data frame into the form that will be suitable for drawing a stacked bar chart (adding a new "Type of title" column)
 coaches_plot <- data.frame(rbind(cbind(coaches_clean$Coach, coaches_clean$`Domestic titles`, rep("Domestic titles", 23)),
                                  cbind(coaches_clean$Coach, coaches_clean$`European titles`, rep("European titles", 23)),
@@ -127,7 +125,10 @@ coaches_plot_clean <- data.frame(Coach, Number_of_titles, Type_of_title)
 ### 3. Table of coaches of FC Bayern Munich since 1963 that is suitable for drawing stacked bar chart
 View(coaches_plot_clean)
 
-### The stacked bar chart of transformed table of coaches of FC Bayern Munich since 1963
+# Saving created data frame as a .csv file
+write.csv(coaches_plot_clean, "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\coaches_plot_clean.csv", row.names = FALSE)
+
+### 4. The stacked bar chart of transformed table of coaches of FC Bayern Munich since 1963
 ggplot(coaches_plot_clean, aes(x = factor(Coach), y = Number_of_titles, fill = Type_of_title, label = Number_of_titles))+
   geom_bar(position = position_stack(), stat = "identity", width = .7) + 
   geom_text(aes(label = Number_of_titles), position = position_stack(vjust = 0.5),size = 4) +
@@ -145,7 +146,7 @@ ggplot(coaches_plot_clean, aes(x = factor(Coach), y = Number_of_titles, fill = T
   ggtitle("Coaches of FC Bayern Munich since 1963") + 
   labs(caption = "Data Source: Wikipedia.\n\nNotes: A stacked bar chart showing the domestic, europeand and worldwide titles won by FC Bayern \nMunich head coaches from 1963 to the present. \nDomestic titles (BL - Bundesliga, DP - DFB-Pokal, LP - DFB-Ligapokal, SC - Super Cup), European ti-\ntles (CL - Champions League/European Cup, EL - Europa League/UEFA Cup, SC - UEFA Super Cup, \nWC - UEFA Cup Winners' Cup), Worldwide titles (ICC - Intercontinental Cup, CWC - FIFA Club World \nCup).")
 
-# Saving chart as a .png file
+# Saving created chart as a .png file
 ggsave_custom(chart, 
               "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\chart.png",
               dpi = "auto",
