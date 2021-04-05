@@ -5,8 +5,6 @@ library(dplyr)
 library(janitor)
 library(ggplot2)
 
-# Coaches of FC Bayern Munich since 1963
-
 url <- read_html("https://en.wikipedia.org/wiki/FC_Bayern_Munich") #Wikipedia's article about FC Bayern Munich
 
 all_tables <- url %>% html_table(fill = TRUE) #all tables from the article
