@@ -147,7 +147,7 @@ chart <- ggplot(coaches_plot_clean, aes(x = factor(Coach), y = Number_of_titles,
   labs(caption = "Data Source: Wikipedia.\n\nNotes: A stacked bar chart showing the domestic, europeand and worldwide titles won by FC Bayern \nMunich head coaches from 1963 to the present. \nDomestic titles (BL - Bundesliga, DP - DFB-Pokal, LP - DFB-Ligapokal, SC - Super Cup), European ti-\ntles (CL - Champions League/European Cup, EL - Europa League/UEFA Cup, SC - UEFA Super Cup, \nWC - UEFA Cup Winners' Cup), Worldwide titles (ICC - Intercontinental Cup, CWC - FIFA Club World \nCup).")
 
 # Saving created chart as a .png file
-ggsave_custom(chart, 
-              "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\chart.png",
-              dpi = "auto",
-              width = 7, height = 14, unit = "cm")
+ggsave(chart, 
+       "C:\\Users\\el ruchenzo\\OneDrive\\Documents\\chart.png",
+        dpi = "auto",
+        width = 7, height = 14, unit = "cm")
